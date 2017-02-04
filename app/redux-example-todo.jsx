@@ -22,12 +22,16 @@ var reducer = (state = stateDefault,action)=>{
 	
 };
 
-var store = Redux.createStore(reducer);
+var store = Redux.createStore(reducer,Redux.compose(
+window.devToolsExtension? window.devToolsExtension(): f => f
+));
 
-var currentState = store.getState(); 
-console.log('currentState: ' , currentState);
+var unsubscribe = store.subscribe(()=>{
+	var state = store.getState();
+	console.log('currentState: ' , state);
+	
+});
+
 store.dispatch({type:'CHANGE_TEXT',
 				text:"watching tutorials"});
 				
-currentState = store.getState(); 				
-console.log('currentState: ' , currentState);
