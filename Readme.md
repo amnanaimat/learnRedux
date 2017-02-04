@@ -1,1 +1,1 @@
-Simple Timer Application Using React.
+Simple Redux  implimentation.
